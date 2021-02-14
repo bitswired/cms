@@ -1,4 +1,4 @@
-import { connectDB, BlogPostModel, TagModel } from "models";
+import { connectDB, BlogPostModel, TagModel } from "@cms/models";
 
 function setAttrs(obj: any, fields: any) {
   return Object.entries(fields).forEach(([key, val]) => {

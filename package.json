@@ -7,9 +7,9 @@
   "scripts": {
     "test": "ts-mocha --paths -p tsconfig.json tests/**/*.spec.ts",
     "clean": "shx rm -rf dist/*",
-    "build": "tsc && tscpaths -p tsconfig.json -s ./src -o ./dist",
-    "link": "tsc && tscpaths -p tsconfig.json -s ./src -o ./dist && copy package.json dist && copy README.md dist && cd dist && npm link",
-    "dist": "tsc && tscpaths -p tsconfig.json -s ./src -o ./dist && copy package.json dist && copy README.md dist && cd dist && npm publish --access public"
+    "build": "tsc && tscpaths -p tsconfig.build.json -s ./src -o ./dist",
+    "link": "tsc && tscpaths -p tsconfig.build.json -s ./src -o ./dist && copy package.json dist && copy README.md dist && cd dist && npm link",
+    "dist": "tsc && tscpaths -p tsconfig.build.json -s ./src -o ./dist && copy package.json dist && copy README.md dist && cd dist && npm publish --access public"
   },
   "author": "Jimi Vaubien <jimi.vaubien@bitswired.com> (https://bitswired.com)",
   "license": "ISC",

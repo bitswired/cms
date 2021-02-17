@@ -24,9 +24,10 @@ const blogPostShema = new Schema(
   { timestamps: true }
 );
 
-export const BlogPostModel =
-  mongoose.models.BlogPost ||
-  mongoose.model<BlogPost>("BlogPost", blogPostShema);
+export const BlogPostModel: mongoose.Model<BlogPost> = mongoose.model(
+  "BlogPost",
+  blogPostShema
+);
 
 const tagSchema = new Schema(
   {
@@ -35,5 +36,4 @@ const tagSchema = new Schema(
   { timestamps: true }
 );
 
-export const TagModel =
-  mongoose.models.Tag || mongoose.model<Tag>("Tag", tagSchema);
+export const TagModel: mongoose.Model<Tag> = mongoose.model("Tag", tagSchema);

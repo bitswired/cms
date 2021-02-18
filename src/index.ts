@@ -1,1 +1,1 @@
-export { default as CMS } from "@cms/cms";
+export { CMS } from "@cms/cms";

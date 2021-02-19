@@ -57,6 +57,13 @@ class CMSCRUD<T extends mongoose.Document> {
     return await res;
   }
 
+  async getById(id: string, populateFields: string[] = []) {
+    const res = this._model.findById(id);
+    // Populate fields
+    populateFields.forEach((field) => res.populate(field));
+    return await res;
+  }
+
   async create(obj: Partial<T>) {
     return await this._model.create(obj);
   }

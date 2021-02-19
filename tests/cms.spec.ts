@@ -32,6 +32,12 @@ describe("CMS class test", () => {
     expect(res[0]).to.have.property("title", "Test");
   });
 
+  it("get a blog post by id", async () => {
+    const blogpost = await cms.blogpost.crud.create({ title: "Test" });
+    const res = await cms.blogpost.crud.getById(blogpost._id!);
+    expect(res).to.have.property("title", "Test");
+  });
+
   it("creates a tag", async () => {
     await cms.tag.crud.create({ name: "TypeScript" });
     const res = await cms.tag.crud.get();

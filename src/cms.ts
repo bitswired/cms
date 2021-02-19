@@ -11,6 +11,7 @@ interface CMSConfig {
   mongoUser: string;
   mongoPassword: string;
   mongoHost: string;
+  mongoPort: number;
 }
 
 export class CMS {
@@ -34,7 +35,8 @@ export class CMS {
     await connectDB(
       this.config.mongoUser,
       this.config.mongoPassword,
-      this.config.mongoHost
+      this.config.mongoHost,
+      this.config.mongoPort
     );
   }
 }
@@ -48,8 +50,11 @@ class CMSCRUD<T extends mongoose.Document> {
     this._model = model;
   }
 
-  async get() {
-    return await this._model.find();
+  async get(populateFields: string[] = []) {
+    const res = this._model.find();
+    // Populate fields
+    populateFields.forEach((field) => res.populate(field));
+    return await res;
   }
 
   async create(obj: Partial<T>) {

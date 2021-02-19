@@ -1,8 +1,13 @@
 import mongoose, { Schema } from "mongoose";
 
-export function connectDB(user: string, password: string, host: string) {
+export function connectDB(
+  user: string,
+  password: string,
+  host: string,
+  port: number
+) {
   return mongoose.connect(
-    `mongodb://${user}:${password}@${host}:27017/main?authSource=admin`,
+    `mongodb://${user}:${password}@${host}:${port}/main?authSource=admin`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

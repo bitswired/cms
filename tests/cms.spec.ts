@@ -6,6 +6,7 @@ const cms = new CMS({
   mongoUser: process.env.MONGO_ROOT_USER as string,
   mongoPassword: process.env.MONGO_ROOT_PASSWORD as string,
   mongoHost: process.env.MONGO_HOST as string,
+  mongoPort: +(process.env.MONGO_PORT as string),
 });
 
 describe("CMS class test", () => {
@@ -55,7 +56,7 @@ describe("CMS class test", () => {
       tags: [tag1._id, tag2._id] as any,
     });
 
-    const res = await cms.blogpost.crud.get();
+    const res = await cms.blogpost.crud.get(["tags"]);
     expect(res[0].tags[0]).to.have.deep.property("name", "TypeScript");
     expect(res[0].tags[1]).to.have.deep.property("name", "Python");
   });
